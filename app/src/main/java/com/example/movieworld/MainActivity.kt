@@ -2,7 +2,9 @@ package com.example.movieworld
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.movieworld.databinding.ActivityMainBinding
 import com.example.movieworld.models.Movie
 import com.example.movieworld.models.MovieResponse
 import com.example.movieworld.services.MovieApiService
@@ -14,29 +16,33 @@ import retrofit2.Response
 
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var binding : ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        rv_movies_list.layoutManager=LinearLayoutManager(this ,LinearLayoutManager.VERTICAL ,false )
-        rv_movies_list.setHasFixedSize(true)
-        getMovieData { movies :List<Movie> -> rv_movies_list.adapter =MovieAdapter(movies) }
-        println(getMovieData {  movies :List<Movie> -> rv_movies_list.adapter =MovieAdapter(movies) })
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        replace(MovieScreen())
+        binding.bottomNavBar.setOnItemSelectedListener {
+            when (it.itemId) {
 
+                R.id.home -> replace(MovieScreen())
+                R.id.profile -> replace(TvScreen())
 
+                else -> {
+
+                }
+            }
+            true
+        }
 
 
     }
-    private fun getMovieData(callback: (List<Movie>) -> Unit){
-        val apiService = MovieApiService.getInstance().create(MovieApiInterface::class.java)
-        apiService.getMovieList().enqueue(object :Callback<MovieResponse>{
-            override fun onResponse(call: Call<MovieResponse>, response: Response<MovieResponse>) {
-                return callback(response.body()!!.movies)
-            }
 
-            override fun onFailure(call: Call<MovieResponse>, t: Throwable) {
-            }
-
-        })
-
+    private fun replace(fragment: Fragment) {
+        val fragmentManager = supportFragmentManager
+        val fragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.frame_Layout, fragment)
+        fragmentTransaction.commit()
     }
+
 }
