@@ -6,15 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.movieworld.models.Movie
-import com.example.movieworld.models.MovieResponse
 import com.example.movieworld.models.Tv
 import com.example.movieworld.models.TvResponse
 import com.example.movieworld.services.MovieApiInterface
 import com.example.movieworld.services.MovieApiService
-import com.example.movieworld.services.TvApiInterface
-import kotlinx.android.synthetic.main.fragment_movie_screen.*
-import kotlinx.android.synthetic.main.fragment_movie_screen.view.*
 import kotlinx.android.synthetic.main.fragment_tv_screen.*
 import kotlinx.android.synthetic.main.fragment_tv_screen.view.*
 import retrofit2.Call
@@ -41,8 +36,8 @@ class TvScreen : Fragment() {
 
     }
     private fun getMovieData(callback: (List<Tv>) -> Unit){
-        val apiService = MovieApiService.getInstance().create(TvApiInterface::class.java)
-        apiService.getMovieList().enqueue(object : Callback<TvResponse> {
+        val apiService = MovieApiService.getInstance().create(MovieApiInterface::class.java)
+        apiService.getTvList().enqueue(object : Callback<TvResponse> {
             override fun onResponse(call: Call<TvResponse>, response: Response<TvResponse>) {
                 return callback(response.body()!!.movies)
             }

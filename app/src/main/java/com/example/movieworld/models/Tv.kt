@@ -7,7 +7,6 @@ import kotlinx.android.parcel.Parcelize
 data class Tv(
     @SerializedName("id")
     val  id : String?,
-
     @SerializedName("original_name")
     val title:String?,
     @SerializedName("poster_path")

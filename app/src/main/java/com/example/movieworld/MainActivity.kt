@@ -1,48 +1,67 @@
 package com.example.movieworld
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.movieworld.databinding.ActivityMainBinding
-import com.example.movieworld.models.Movie
-import com.example.movieworld.models.MovieResponse
-import com.example.movieworld.services.MovieApiService
-import com.example.movieworld.services.MovieApiInterface
-import kotlinx.android.synthetic.main.activity_main.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import android.os.Handler
+import android.view.WindowManager
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
+import android.widget.ImageView
+import android.widget.TextView
 
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var binding : ActivityMainBinding
+    private val splash: Long = 2000
+
+    private lateinit var topAnim: Animation
+    private lateinit var bottomAnim: Animation
+
+    private lateinit var imageFirstScreen: ImageView
+    private lateinit var textFirstScreen: TextView
+    private lateinit var descFirstScreen: TextView
+    private val handler: Handler = Handler()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-        replace(MovieScreen())
-        binding.bottomNavBar.setOnItemSelectedListener {
-            when (it.itemId) {
+        setContentView(R.layout.activity_main)
 
-                R.id.home -> replace(MovieScreen())
-                R.id.profile -> replace(TvScreen())
+        getWindow().setFlags(
+            WindowManager.LayoutParams.FLAG_FULLSCREEN,
+            WindowManager.LayoutParams.FLAG_FULLSCREEN
+        )
+        topAnim = AnimationUtils.loadAnimation(this, R.anim.top_animation)
+        bottomAnim = AnimationUtils.loadAnimation(this, R.anim.bottom_animation)
 
-                else -> {
+        imageFirstScreen = findViewById(R.id.image_firstScreenImage)
+        textFirstScreen = findViewById(R.id.text_firstScreenTitle)
+        descFirstScreen = findViewById(R.id.text_firstScreenDesc)
 
-                }
-            }
-            true
+
+        imageFirstScreen.animation = topAnim
+        textFirstScreen.animation = bottomAnim
+        descFirstScreen.animation = bottomAnim
+
+    }
+
+    private val runnable: Runnable = Runnable {
+        if (!isFinishing) {
+            val intent: Intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+            finish()
         }
-
-
     }
 
-    private fun replace(fragment: Fragment) {
-        val fragmentManager = supportFragmentManager
-        val fragmentTransaction = fragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.frame_Layout, fragment)
-        fragmentTransaction.commit()
+    override fun onResume() {
+        super.onResume()
+
+        handler.postDelayed(runnable, splash)
     }
+
+    override fun onPause() {
+        super.onPause()
+        handler.removeCallbacks(runnable)
+    }
+
+
 
 }

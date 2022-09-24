@@ -1,8 +1,11 @@
 package com.example.movieworld
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.movieworld.models.Movie
@@ -23,6 +26,11 @@ class MovieAdapter (
 //                    itemView.movie_overview.text = movie.overview
                     itemView.progress_bar.progress = (movie.vote!!*10).toInt()
                     itemView.text_view_progress.text =" ${(movie.vote!!*10).toInt()}%"
+                    itemView.setOnClickListener {
+                        val intent : Intent = Intent(itemView.context , LoginActivity::class.java)
+                        println("id = ${movie.id}")
+                        startActivity(itemView.context, intent , null)
+                    }
 
 
                 }
