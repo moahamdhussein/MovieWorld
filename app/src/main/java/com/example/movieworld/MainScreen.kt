@@ -4,6 +4,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.example.movieworld.databinding.ActivityMainScreenBinding
+import com.example.movieworld.fragments.MovieScreen
+import com.example.movieworld.fragments.TvScreen
+import com.example.movieworld.fragments.setting
 
 
 class MainScreen : AppCompatActivity() {

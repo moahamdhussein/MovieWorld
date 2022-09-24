@@ -1,6 +1,5 @@
-package com.example.movieworld
+package com.example.movieworld.fragments
 
-import android.app.Activity
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
@@ -10,6 +9,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.movieworld.LoginActivity
+import com.example.movieworld.R
 import kotlinx.android.synthetic.main.fragment_setting.view.*
 
 

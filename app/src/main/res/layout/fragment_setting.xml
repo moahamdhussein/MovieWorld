@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/black"
-    tools:context=".setting">
+    tools:context=".fragments.setting">
     <androidx.cardview.widget.CardView
         android:id="@+id/cardProfilePicture"
         android:layout_width="200dp"

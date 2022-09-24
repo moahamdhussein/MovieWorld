@@ -1,4 +1,5 @@
 package com.example.movieworld.models
+
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
@@ -6,20 +7,22 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class Tv(
     @SerializedName("id")
-    val  id : String?,
+    val id: String?,
     @SerializedName("original_name")
-    val title:String?,
+    val title: String?,
     @SerializedName("poster_path")
-    val poster :String?,
+    val poster: String?,
     @SerializedName("first_air_date")
-    val  release :String?,
+    val release: String?,
+
+    @SerializedName("overview")
+    val overview: String?,
 
     @SerializedName("vote_average")
-    val vote:Double?
+    val vote: Double?
 
-): Parcelable{
-    constructor():this( "","","","",0.0)
-
+) : Parcelable {
+    constructor() : this("", "", "", "", "", 0.0)
 
 
 }

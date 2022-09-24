@@ -1,4 +1,4 @@
-package com.example.movieworld
+package com.example.movieworld.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.movieworld.Adapter.MovieAdapter
+import com.example.movieworld.R
 import com.example.movieworld.models.Movie
 import com.example.movieworld.models.MovieResponse
 import com.example.movieworld.services.MovieApiInterface
@@ -35,7 +37,7 @@ class MovieScreen : Fragment() {
 
         view.rv_movies_list.layoutManager= LinearLayoutManager( context , LinearLayoutManager.VERTICAL ,false )
         view.rv_movies_list.setHasFixedSize(true)
-        getMovieData { movies :List<Movie> -> rv_movies_list.adapter =MovieAdapter(movies) }
+        getMovieData { movies :List<Movie> -> rv_movies_list.adapter = MovieAdapter(movies) }
 
     }
     private fun getMovieData(callback: (List<Movie>) -> Unit){

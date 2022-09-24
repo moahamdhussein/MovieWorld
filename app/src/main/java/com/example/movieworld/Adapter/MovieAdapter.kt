@@ -1,13 +1,15 @@
-package com.example.movieworld
+package com.example.movieworld.Adapter
 
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.movieworld.InfoActivity
+import com.example.movieworld.LoginActivity
+import com.example.movieworld.R
 import com.example.movieworld.models.Movie
 import kotlinx.android.synthetic.main.movie_item.view.*
 
@@ -23,16 +25,17 @@ class MovieAdapter (
                     itemView.movie_title.text=movie.title
                     itemView.movie_release_date.text=movie.release
                     Glide.with(itemView).load(IMAGE_BASE+ movie.poster).into(itemView.movie_poster)
-//                    itemView.movie_overview.text = movie.overview
                     itemView.progress_bar.progress = (movie.vote!!*10).toInt()
                     itemView.text_view_progress.text =" ${(movie.vote!!*10).toInt()}%"
                     itemView.setOnClickListener {
-                        val intent : Intent = Intent(itemView.context , LoginActivity::class.java)
-                        println("id = ${movie.id}")
+                        val intent : Intent = Intent(itemView.context , InfoActivity::class.java)
+                        intent.putExtra("title" , movie.title)
+                        intent.putExtra("release",movie.release)
+                        intent.putExtra("rating" , (movie.vote/2))
+                        intent.putExtra("overview",movie.overview)
+                        intent.putExtra("poster" , IMAGE_BASE+ movie.poster)
                         startActivity(itemView.context, intent , null)
                     }
-
-
                 }
 
             }

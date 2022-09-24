@@ -1,4 +1,4 @@
-package com.example.movieworld
+package com.example.movieworld.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,12 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import com.example.movieworld.Adapter.TvAdapter
+import com.example.movieworld.R
 import com.example.movieworld.models.Tv
 import com.example.movieworld.models.TvResponse
 import com.example.movieworld.services.MovieApiInterface
 import com.example.movieworld.services.MovieApiService
-import kotlinx.android.synthetic.main.fragment_tv_screen.*
 import kotlinx.android.synthetic.main.fragment_tv_screen.view.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -40,7 +40,7 @@ class TvScreen : Fragment() {
         recyclerTv.layoutManager= LinearLayoutManager( context , LinearLayoutManager.VERTICAL ,false )
         recyclerTv.setHasFixedSize(true)
 
-        getMovieData { tvs -> recyclerTv.adapter =TvAdapter(tvs) }
+        getMovieData { tvs -> recyclerTv.adapter = TvAdapter(tvs) }
 
     }
     private fun getMovieData(callback: (List<Tv>) -> Unit){

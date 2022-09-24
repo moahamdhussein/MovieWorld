@@ -7,6 +7,9 @@ data  class Movie (
     @SerializedName("id")
     val  id : String?,
 
+    @SerializedName("overview")
+    val  overview : String?,
+
     @SerializedName("title")
     val title:String?,
     @SerializedName("poster_path")
@@ -18,7 +21,7 @@ data  class Movie (
     val vote:Double?
 
         ): Parcelable{
-            constructor():this( "","","","",0.0)
+            constructor():this( "","","","","",0.0)
 
 
 
