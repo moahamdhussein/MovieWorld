@@ -13,19 +13,20 @@ class MainScreen : AppCompatActivity() {
         binding = ActivityMainScreenBinding.inflate(layoutInflater)
         setContentView(binding.root)
         replace(MovieScreen())
+        val sharedPreferences = getSharedPreferences("MovieApp", MODE_PRIVATE)
+        binding.mainScreenUser.text = "Welcome, ${sharedPreferences.getString("userName", "name")}"
         binding.bottomNavBar.setOnItemSelectedListener {
             when (it.itemId) {
-
-                R.id.home -> replace(MovieScreen())
-                R.id.profile -> replace(TvScreen())
-
+                R.id.movie -> replace(MovieScreen())
+                R.id.tv -> replace(TvScreen())
+                R.id.setting -> replace(setting())
                 else -> {
-
                 }
             }
             true
         }
     }
+
     private fun replace(fragment: Fragment) {
         val fragmentManager = supportFragmentManager
         val fragmentTransaction = fragmentManager.beginTransaction()

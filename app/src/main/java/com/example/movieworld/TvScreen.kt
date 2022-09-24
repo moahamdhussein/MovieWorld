@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.movieworld.models.Tv
 import com.example.movieworld.models.TvResponse
 import com.example.movieworld.services.MovieApiInterface
@@ -18,6 +20,9 @@ import retrofit2.Response
 
 
 class TvScreen : Fragment() {
+    lateinit var recyclerTv :RecyclerView
+
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,9 +35,12 @@ class TvScreen : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        view.rv_tv_list.layoutManager= LinearLayoutManager( context , LinearLayoutManager.VERTICAL ,false )
-        view.rv_tv_list.setHasFixedSize(true)
-        getMovieData { tvs :List<Tv> -> rv_tv_list.adapter =TvAdapter(tvs) }
+        recyclerTv = view.rv_tv_list
+
+        recyclerTv.layoutManager= LinearLayoutManager( context , LinearLayoutManager.VERTICAL ,false )
+        recyclerTv.setHasFixedSize(true)
+
+        getMovieData { tvs -> recyclerTv.adapter =TvAdapter(tvs) }
 
     }
     private fun getMovieData(callback: (List<Tv>) -> Unit){
@@ -41,7 +49,6 @@ class TvScreen : Fragment() {
             override fun onResponse(call: Call<TvResponse>, response: Response<TvResponse>) {
                 return callback(response.body()!!.movies)
             }
-
             override fun onFailure(call: Call<TvResponse>, t: Throwable) {
             }
 

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    android:background="#588157"
+    android:background="@color/black"
     android:padding="16dp"
     tools:context=".MainActivity">
 
@@ -16,7 +16,7 @@
         android:layout_width="0dp"
         android:layout_height="250dp"
         android:layout_marginTop="65dp"
-        android:src="@drawable/imdb_svgrepo_com"
+        android:src="@drawable/popcorn"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
@@ -27,9 +27,10 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/dancing_script"
         android:includeFontPadding="false"
-        android:text="MYAPP"
+        android:text="PoPCorn"
         android:textAlignment="center"
         android:textSize="80sp"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toTopOf="@id/text_firstScreenDesc"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -39,9 +40,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="50dp"
-        android:text="Slogan Text"
+        android:text="Movie App"
         android:textAlignment="center"
         android:textSize="18sp"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
