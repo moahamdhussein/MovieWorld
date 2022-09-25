@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 
 class LoginActivity : AppCompatActivity() {
 
@@ -20,14 +21,20 @@ class LoginActivity : AppCompatActivity() {
         val sharedPreferences: SharedPreferences = getSharedPreferences("MovieApp", MODE_PRIVATE)
         val editor = sharedPreferences.edit()
         facebookButton = findViewById(R.id.facebookButton)
+        facebookButton.setOnClickListener {
+            Toast.makeText(this , "this is for design only",Toast.LENGTH_SHORT).show()
+        }
         googleButton = findViewById(R.id.googleButton)
+        googleButton.setOnClickListener {
+            Toast.makeText(this , "this is for design only",Toast.LENGTH_SHORT).show()
+        }
         counter = sharedPreferences.getInt("count", 0)
         if (counter == 1) {
             val intent: Intent = Intent(this, MainScreen::class.java)
             startActivity(intent)
         } else {
             userName = findViewById(R.id.editText_userName)
-            userName.setText(sharedPreferences.getString("userName", "name").toString())
+            userName.setText(sharedPreferences.getString("userName", "").toString())
             login = findViewById(R.id.loginButton)
             login.setOnClickListener {
                 editor.putString("userName", userName.text.toString())
