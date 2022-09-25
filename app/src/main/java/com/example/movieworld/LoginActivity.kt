@@ -33,6 +33,7 @@ class LoginActivity : AppCompatActivity() {
                 editor.putString("userName", userName.text.toString())
                 editor.putInt("count", 1)
                 editor.apply()
+                counter = sharedPreferences.getInt("count",0)
                 val intent: Intent = Intent(this, MainScreen::class.java)
                 startActivity(intent)
             }
@@ -41,9 +42,12 @@ class LoginActivity : AppCompatActivity() {
     }
 
     override fun onPause() {
+
         super.onPause()
-        if (counter == 1) {
+        if (counter ==1){
             finish()
         }
     }
+
+
 }

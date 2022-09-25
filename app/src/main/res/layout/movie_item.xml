@@ -39,7 +39,7 @@
         android:maxLines="2"
         android:text="Movie Title"
         android:textColor="@color/white"
-        android:textSize="20sp"
+        android:textSize="25sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@id/border"
         app:layout_constraintStart_toEndOf="@id/movie_poster"
@@ -53,7 +53,8 @@
         android:layout_marginTop="10dp"
         android:text="Release Date"
         android:textColor="#00B8D4"
-        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textSize="22sp"
         app:layout_constraintStart_toEndOf="@id/movie_poster"
         app:layout_constraintTop_toBottomOf="@+id/movie_title" />
 
@@ -76,6 +77,9 @@
         app:layout_constraintEnd_toEndOf="@+id/progress_bar"
         app:layout_constraintStart_toStartOf="@+id/progress_bar"
         app:layout_constraintTop_toTopOf="@+id/progress_bar"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:textSize="20dp"
         tools:text="60%" />
 
 

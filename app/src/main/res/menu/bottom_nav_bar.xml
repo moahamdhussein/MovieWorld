@@ -1,13 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:title="Movies"
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
         android:id="@+id/movie"
-        android:icon="@drawable/film_svgrepo_com"/>
-    <item android:title="Tv Series"
+        android:enabled="true"
+        android:icon="@drawable/film_svgrepo_com"
+        android:title="Moives"
+        android:iconTint="@color/movie" />
+
+    <item
         android:id="@+id/tv"
-        android:icon="@drawable/tv_monitor_svgrepo_com"/>
-    <item android:title="setting"
+        android:enabled="true"
+        android:icon="@drawable/tv_monitor_svgrepo_com"
+        android:title="Tv Series" />
+    <item
         android:id="@+id/setting"
-        android:icon="@drawable/ic_baseline_settings_24"/>
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_settings_24"
+        android:title="setting" />
+
 
 </menu>

@@ -8,4 +8,8 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="colorDarkTransparent">#C6000000</color>
+    <color name="movie">#1E94F4</color>
+    <color name="tv">#6637B4</color>
+    <color name="setting">#E51E67</color>
+
 </resources>
